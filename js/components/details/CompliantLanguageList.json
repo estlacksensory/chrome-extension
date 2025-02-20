@@ -1,0 +1,21 @@
+{
+	"SEO Terms":[
+		"East Texas A&M University",
+		"East Texas A&M"
+	],
+	"allowed":[
+		"faculty","students","athletics","lion","lucky"
+	],
+	"disallowed":[
+		"inside.tamuc.edu","marketing","marcomm","affirmative action","equal opportunity","diversity",
+		"skibbidy","skabbidy","skibbity","skabbity","skibbity bop","skabbity bop","skibbity bop",
+		"bet", "bussin", "cap", "delulu", "glow-up", "gyat", "highkey", "rizz", "snatched", "sus",
+		"tbr", "thirsty", "vibes", "wig", "yeet", "yikes", "zaddy", "zamn", "stan", "simp", "sksksk",
+		"slay", "shade", "receipts", "periodt", "no cap", "lit", "lowkey", "flex", "fam", "extra",
+		"clout", "boujee", "basic", "bae", "baddie", "af", "finesse", "flex", "finesse", "flex",
+		"finna", "fam", "extra", "clout", "boujee", "basic", "bae", "baddie", "af", "finesse",
+		"flex", "finesse", "flex", "finna", "fam", "extra", "clout", "boujee", "basic", "bae",
+		"baddie", "af", "finesse", "flex", "finesse", "flex", "finna", "fam", "extra", "clout",
+		"skibidi", "skabbidi", "skibbidi", "skabbidi", "skibbidi bop", "skabbidi bop", "skibbidi bop"
+	]
+}
