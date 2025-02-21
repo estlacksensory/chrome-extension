@@ -36,4 +36,3 @@ export const filterTabsAndOrigin2 = sender => async () => {
       //await chrome.sidePanel.setOptions({ enabled: false });
     }
 };
-

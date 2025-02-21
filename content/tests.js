@@ -32,10 +32,10 @@ function neutral(message) {
 //});
 //
 //
-//test("URL Policy", async () => {
-//  // What is our url policy? no swcpf=1, no redirect=none, no _gl
-//  return fail("Not Implemented");
-//});
+test("URL Policy", async () => {
+  // What is our url policy? no swcpf=1, no redirect=none, no _gl
+  return fail("Not Implemented");
+});
 
 
 test("Has Meta Description", async () => {
@@ -126,5 +126,15 @@ test("Program is listed in department page.", async () => {
   } catch {
     return fail("Could not access the associated department page");
   }
+});
+
+test("Compliant Language", async () => {
+  const body = document.querySelector('body');
+  if (!body) {
+    return fail("no body.");
+  } else if ((body?.content || "").length == 0) {
+    return fail("nothing.");
+  }
+  return ok("has content");
 });
 
