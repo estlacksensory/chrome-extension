@@ -1,7 +1,5 @@
 import { html } from "../../../node_modules/lit-html/lit-html.js"; 
 
-
-
 function getNearestAspectRatio(width, height) {
   const standardRatios = [
     { ratio: "1:1", value: 1 },
@@ -47,10 +45,6 @@ function getNearestAspectRatio(width, height) {
 
   return nearest.ratio;
 }
-
-
-
-
 
 export const FeaturedImage = (detail) => {
   const { data, title } = detail;
