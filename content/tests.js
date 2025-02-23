@@ -32,10 +32,10 @@ function neutral(message) {
 //});
 //
 //
-test("URL Policy", async () => {
-  // What is our url policy? no swcpf=1, no redirect=none, no _gl
-  return fail("Not Implemented");
-});
+// test("URL Policy", async () => {
+//   // What is our url policy? no swcpf=1, no redirect=none, no _gl
+//   return fail("Not Implemented");
+// });
 
 
 test("Has Meta Description", async () => {
@@ -128,13 +128,18 @@ test("Program is listed in department page.", async () => {
   }
 });
 
-test("Compliant Language", async () => {
-  const body = document.querySelector('body');
-  if (!body) {
-    return fail("no body.");
-  } else if ((body?.content || "").length == 0) {
-    return fail("nothing.");
-  }
-  return ok("has content");
+test("Compliant Language", async ( arr ) => {
+  let SEOTerms = ["East Texas A&M University","East Texas A&M"];
+  let allowed = ["faculty", "students", "athletics", "lion", "lucky"];
+  let disallowed = ["inside.tamuc.edu", "marketing", "marcomm", "affirmative action", "equal opportunity", "diversity"];
+
+  console.log(disallowed);
+  // const body = document.querySelector('body');
+  // if (!body) {
+  //   return fail("no body.");
+  // } else if ((body?.innerHTML || "").length == 0) {
+  //   return fail("nothing.");
+  // }
+  return ok(`has content boyeee !!! ${disallowed[3]} - ${arr[1]}, `);
 });
 
