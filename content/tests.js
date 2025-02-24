@@ -128,18 +128,39 @@ test("Program is listed in department page.", async () => {
   }
 });
 
-test("Compliant Language", async ( arr ) => {
-  let SEOTerms = ["East Texas A&M University","East Texas A&M"];
-  let allowed = ["faculty", "students", "athletics", "lion", "lucky"];
-  let disallowed = ["inside.tamuc.edu", "marketing", "marcomm", "affirmative action", "equal opportunity", "diversity"];
+function checkTerms(terms, message, checkPresence = true) {
+  const body = document.querySelector('body #main');
+  if (!body) return fail("no body.");
+  if ((body?.textContent || "").length == 0) return fail("nothing.");
 
-  console.log(disallowed);
-  // const body = document.querySelector('body');
-  // if (!body) {
-  //   return fail("no body.");
-  // } else if ((body?.innerHTML || "").length == 0) {
-  //   return fail("nothing.");
-  // }
-  return ok(`has content boyeee !!! ${disallowed[3]} - ${arr[1]}, `);
+  for (let term of terms) {
+    const termPresent = body.textContent.includes(term);
+    if (checkPresence && !termPresent) return fail(`${message} term: ${term}`);
+    if (!checkPresence && termPresent) return fail(`${message} term: ${term}`);
+  }
+  return ok(`All ${message} terms are ${checkPresence ? 'present' : 'absent'}.`);
+}
+
+function allowedList() {
+  return checkTerms(["faculty", "students", "athletics", "lion", "lucky"], "allowed");
+}
+
+function disallowedList() {
+  return checkTerms(["inside.tamuc.edu", "marketing", "marcomm", "affirmative action", "equal opportunity", "diversity"], "disallowed", false);
+}
+
+function SEOTerms() {
+  return checkTerms(["East Texas A&M University", "East Texas A&M"], "SEO");
+}
+
+test("Compliant Language", async () => {
+  const allowedResult = allowedList();
+  if (allowedResult.status !== "OK") return allowedResult;
+
+  const disallowedResult = disallowedList();
+  if (disallowedResult.status !== "OK") return disallowedResult;
+
+  const seoResult = SEOTerms();
+  return seoResult;
 });
 
