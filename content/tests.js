@@ -128,39 +128,18 @@ test("Program is listed in department page.", async () => {
   }
 });
 
-function checkTerms(terms, message, checkPresence = true) {
-  const body = document.querySelector('body #main');
-  if (!body) return fail("no body.");
-  if ((body?.textContent || "").length == 0) return fail("nothing.");
-
-  for (let term of terms) {
-    const termPresent = body.textContent.includes(term);
-    if (checkPresence && !termPresent) return fail(`${message} term: ${term}`);
-    if (!checkPresence && termPresent) return fail(`${message} term: ${term}`);
-  }
-  return ok(`All ${message} terms are ${checkPresence ? 'present' : 'absent'}.`);
-}
-
-function allowedList() {
-  return checkTerms(["faculty", "students", "athletics", "lion", "lucky"], "allowed");
-}
-
-function disallowedList() {
-  return checkTerms(["inside.tamuc.edu", "marketing", "marcomm", "affirmative action", "equal opportunity", "diversity"], "disallowed", false);
-}
-
-function SEOTerms() {
-  return checkTerms(["East Texas A&M University", "East Texas A&M"], "SEO");
-}
-
 test("Compliant Language", async () => {
-  const allowedResult = allowedList();
-  if (allowedResult.status !== "OK") return allowedResult;
+  const main = document.querySelector("main");
+  const checkTerms = ["TAMUC", "affirmative action", "equal opportunity", "diversity", "investments", "endowment", "funds", "donations", "gifts", "alumni", "alumnus", "alumnae", "alumna"];
+  var termsFound = [];
+  for (let i = 0; i < checkTerms.length; i++) {
+    if (main?.textContent.includes(checkTerms[i])){
+      termsFound.push(checkTerms[i]);
+    }}
 
-  const disallowedResult = disallowedList();
-  if (disallowedResult.status !== "OK") return disallowedResult;
-
-  const seoResult = SEOTerms();
-  return seoResult;
+    if (termsFound.length === 0) {
+      return ok("No non-compliant terms found!");
+    } else {
+      return fail("The following non-compliant terms were found: " + termsFound.join(", "));
+    } 
 });
-
